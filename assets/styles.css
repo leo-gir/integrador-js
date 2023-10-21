@@ -1,0 +1,43 @@
+/* @font-face {
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    /* font-family: 'Rubik', sans-serif; */
+}
+
+#header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center ;
+    width: 100%;
+    height: 80px;
+    background-color: black;
+}
+
+.nav-list{
+    display: flex;
+    gap: 30px;
+    color: white;
+    font-size: 20px;
+}
+
+#hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-img{
+    max-width: 1400px;
+}
