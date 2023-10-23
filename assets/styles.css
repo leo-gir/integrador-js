@@ -7,7 +7,15 @@
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
-    /* font-family: 'Rubik', sans-serif; */
+    font-family: 'Titillium Web', sans-serif;
+}
+
+:root{
+    --dorado: #b68810;
+    --marron: #301406;
+    --verde: #7f9473;
+    --pastel: #d3c795;
+    --naranja: #c02c20;
 }
 
 #header{
@@ -16,13 +24,37 @@
     align-items: center;
 }
 
+body{
+    background-color: var(--dorado);
+}
+
+h1{
+    font-weight: 900;
+    font-size: 80px;
+}
+
+h2{
+    font-weight: 700;
+    font-size: 50px;
+}
+
+h3{
+    font-weight: 500;
+    font-size: 40px;
+}
+
+p{
+    font-weight: 400;
+    font-size: 22px;
+}
+
 .navbar{
     display: flex;
     justify-content: space-between;
     align-items: center ;
     width: 100%;
     height: 80px;
-    background-color: black;
+    background-color: var(--naranja);
 }
 
 .nav-list{
@@ -40,4 +72,104 @@
 
 .hero-img{
     max-width: 1400px;
+    border-radius: 0 0 5px 5px;
 }
+
+#about{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+#about h1{
+    text-align: center;
+}
+
+.container-about{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 30px;
+    gap:25px;
+}
+
+.card-about{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    padding: 15px;
+    text-align: center;
+    border: 2px solid var(--marron);
+    border-radius: 10px;
+    background-color: var(--pastel);
+    box-shadow: 10px 8px 10px rgba(0, 0, 0, 0.519)
+}
+
+.card-about img{
+    max-width: 250px;
+}
+
+
+#products{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;  
+    margin: 35px;
+    width: 80%;
+}
+
+.container-products{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.card-products{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    padding: 15px;
+    text-align: center;
+    border: 2px solid var(--marron);
+    border-radius: 10px;
+    background-color: rgb(225, 225, 225);
+    box-shadow: 10px 8px 10px rgba(0, 0, 0, 0.519)
+}
+
+.card-products h2{
+    font-size: 35px;
+}
+.card-products h3{
+    font-size: 20px;
+}
+
+.card-products img{
+    max-height: 200px;
+}
+
+.card-products button{
+    
+}
+
+.caract-prod{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+}
+
+.caract-prod p{
+    font-size: 18px;
+}
+
