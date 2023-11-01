@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIRRERIA</title>
+    <title>La Bodega de la Birra</title>
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./assets/styles.css">
 </head>
+
 <body>
     <header id="header">
         <nav class="navbar">
-            <img src="" alt="logo">
+            <img src="./assets/img/logo2.png" alt="logo" class="nav-logo">
             <ul class="nav-list">
                 <li><a href="#hero">Inicio</a></li>
                 <li><a href="#about">Nosotros</a></li>
                 <li><a href="#products">Productos</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
-            <img src="./assets/img/cart.png" alt="cart">
+            <img src="./assets/img/cart.png" alt="cart" class="cart-icon">
             <!-- <div class="cart">
                 <h2>TUS COMPRAS</h2>
                 <div class="cart-container">
                     <div class="cart-item">
-                        <img src="./assets/img/gift-card.png" alt="">
+                        <img src="./assets/img/Beepure-Belguian.png" alt="">
                         <div class="item-info">
-                            <h3 class="item-tittle">GIFTCARD</h3>
+                            <h3 class="item-tittle">Beepure</h3>
+                            <p>Belguian White x500ml</p>
                             <div class="item-price">
-                                $8000
+                                <span>$1000</span>
                             </div>
                         </div>
-                        
+
                         <div class="item-handler">
                             <span class="quantity-handler down">-</span>
                             <span class="item-quantity">1</span>
@@ -52,35 +64,45 @@
 
     <main id="main">
         <section id="hero">
-            <img src="./assets/img/hero.jpg" alt="hero" class="hero-img">
+            <img src="./assets/img/hero.png" alt="hero" class="hero-img">
         </section>
 
         <section id="about">
             <h1>Nuestros servicios</h1>
             <div class="container-about">
                 <div class="card-about">
-                    <div class="card-about-img">
-                        <img src="https://ximg.es/250x250/000/fff" alt="">
+                    <img src="./assets/img/repartidor-moto.png" alt="repartidor">
+                    <div class="card-info">
+                        <h2>Envío rápido</h2>
+                        <p> ¡Disfrutá de tus cervezas artesanales favoritas en casa en tiempo récord! Nuestro servicio
+                            de envío rápido garantiza que tus cervezas lleguen frescas a tu puerta en tan solo unas
+                            horas. No esperes, ordénalas y disfruta de la comodidad de nuestro envío rápido.</p>
                     </div>
-                    <div class="card-about-info">
-                        <h3>Titulo</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem nesciunt ad iusto ducimus tempore a dicta id soluta! Quam fuga rem amet neque accusamus enim perferendis expedita provident eius quasi?</p>
-                    </div>
-                </div>
-            
-            
-                <div class="card-about">
-                    <h3>Titulo</h3>
-                    <img src="https://ximg.es/250x250/000/fff" alt="">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem nesciunt ad iusto ducimus tempore a dicta id soluta! Quam fuga rem amet neque accusamus enim perferendis expedita provident eius quasi?</p>
                 </div>
 
                 <div class="card-about">
-                    <h3>Titulo</h3>
-                    <img src="https://ximg.es/250x250/000/fff" alt="">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem nesciunt ad iusto ducimus tempore a dicta id soluta! Quam fuga rem amet neque accusamus enim perferendis expedita provident eius quasi?</p>           
+                    <img src="./assets/img/botellas-cervezas.png" alt="botellas-cerveza">
+                    <div class="card-info">
+                        <h2>Gran variedad</h>
+                            <p> Sumergite en el mundo de las cervezas artesanales con nuestra exclusiva selección.
+                                Reunimos
+                                las mejores cervezas de los mejores cerveceros. Desde sabores
+                                frutales hasta notas ahumadas, nuestra selección te llevará a un viaje de sabor que no
+                                te
+                                podés perder.</p>
+                    </div>
                 </div>
-        </div>
+
+                <div class="card-about">
+                    <img src="./assets/img/cervezas-cata.png" alt="cata-cerveza">
+                    <div class="card-info">
+                        <h2>Catas en el local</h2>
+                        <p>Experimentá la esencia de la cerveza artesanal con Catas en nuestro local. Nuestros
+                            expertos cerveceros te guiarán a través de una selección de nuestras mejore cervezas
+                            explorando sabores y aromas únicos. ¡Vení y disfrutá de una experiencia única!</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="products">
@@ -96,19 +118,7 @@
                     <li>Filtro por  marca</li>
                     <li>Filtro por cantidad</li>
                 </ul> -->
-                <div class="container-products">
-                    <div class="card-products">
-                        <img src="./assets/img/botella.png" alt="">
-                        <h2>Cerveza Beepure</h2>
-                        <h3>Belguian White x500ml</h3>
-                        <div class="caract-prod">
-                            <p>IBU 14</p>
-                            <p>Alcochol 4,7%</p>
-                        </div>
-                        <p>$1000</p>
-                        <button class="product-btn"><span>Agregar al carrito</span></button>
-                    </div>
-                </div>
+            <div class="container-products"></div>
         </section>
 
         <section id="contact">
@@ -133,11 +143,21 @@
                     </div>
                     <input type="submit" value="Enviar">
                 </form>
-                <div class="mapa">
+                <div class="contact">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2159.4862668729183!2d-58.50070441305956!3d-34.638642024340236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc9b13f277e21%3A0x67fd751d4428e217!2sAv.%20Rivadavia%209740%2C%20C1407%20DZT%2C%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1690739901228!5m2!1ses-419!2sar"
-                        style="border:0;" allowfullscreen="" loading="lazy"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.9844293437545!2d-58.52439412342854!3d-34.65509616021486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc859b4be3813%3A0x6a37114c1393115e!2sAv.%20Emilio%20Castro%207436%2C%20C1408IGY%20CABA!5e0!3m2!1ses-419!2sar!4v1698624611705!5m2!1ses-419!2sar"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="tel">
+                            <div>
+                                <img src="./assets/img/tel.png" alt="Teléfono">
+                                <span>4444-4444</span>
+                            </div>
+                            <div>
+                                <img src="./assets/img/wa.png" alt="WhatsApp">
+                                <span>15-5555-5555</span>
+                            </div>
+                        </div>
                 </div>
             </div>
         </section>
@@ -145,9 +165,26 @@
     </main>
 
     <footer id="footer">
-        
+        <div class="social">
+            <a href="http://www.facebook.com"><img src="./assets/img/fb-footer.png" alt="facebook"></a>
+            <a href="http://www.instagram.com"><img src="./assets/img/ig-footer.png" alt="instagram"></a>
+            <a href="tel:4444-4444"><img src="./assets/img/tel-footer.png" alt="teléfono"></a>
+            <a href="http://www.https://web.whatsapp.com/"><img src="./assets/img/wa-footer.png" alt="whatsapp"></a>
+        </div>
+
+        <div class="footer-logo">
+            <img src="./assets/img/logo.png" alt="">
+        </div>
+
+        <div class="design">
+            <p>Integrador JavaScript - NUCBA</p>
+            <p>Diseño de Leonel Gironella</p>
+            <p>Año 2023</p>
+        </div>
+
     </footer>
 
     <script src="./assets/index.js"></script>
 </body>
+
 </html>
