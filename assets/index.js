@@ -100,13 +100,50 @@ const productsList = [
   },
 ];
 
-const containerCardProducts = document.querySelector('.container-products')
+const cartMenu = document.querySelector('.cart');
+const cartIcon = document.querySelector('.cart-icon');
+const overlay = document.querySelector('.overlay');
+const navMenu = document.querySelector('.nav-list');
+const containerCardProducts = document.querySelector('.container-products');
+
+
+
+const inputName = document.getElementById('nombre')
+const inputMail = document.getElementById('mail')
+const inputTel = document.getElementById('tel')
+const inputMsg = document.getElementById('msg')
+const inputSubmit = document.getElementById('submit')
 
 // LOCALSTORAGE//
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const saveCart = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
 };
+
+
+//CARRITO
+
+const toggleCart = () => {
+  cartMenu.classList.toggle('open-cart');
+  // if(barsMenu.classList.contains('open-menu')){
+  //   barsMenu.classList.remove('open-menu');
+  //   return;
+  // }
+  // overlay.classList.toggle('show-overlay');
+  overlay.classList.toggle('show-overlay');
+}
+
+const closeOnOverlayClick = () => {
+  // barsMenu.classList.remove('open-menu');
+  cartMenu.classList.remove('open-cart');
+  overlay.classList.remove('show-overlay');
+}
+
+const closeOnClick = (e) => {
+  if(!e.target.classList.contains('nav-link')) return;
+  barsMenu.classList.remove('open-menu');
+  overlay.classList.remove('show-overlay');
+}
 
 
 //CARD PRODUCTOS
@@ -139,8 +176,17 @@ const renderProducts = () => {
     containerCardProducts.innerHTML = productsList.map((product) => cardProductTemplate(product)).join('');
 }
 
+
+//VALIDACIÓN FORMULARIO
+
+//VER CLASE 14
+
+
 const init = () => {
-    document.addEventListener('DOMContentLoaded', renderProducts);
+  cartIcon.addEventListener('click', toggleCart);
+  overlay.addEventListener('click', closeOnOverlayClick);
+  navMenu.addEventListener('click', closeOnClick)
+  document.addEventListener('DOMContentLoaded', renderProducts);
 };
 
 init();

@@ -25,13 +25,13 @@
         <nav class="navbar">
             <img src="./assets/img/logo2.png" alt="logo" class="nav-logo">
             <ul class="nav-list">
-                <li><a href="#hero">Inicio</a></li>
-                <li><a href="#about">Nosotros</a></li>
-                <li><a href="#products">Productos</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a class="nav-link" href="#hero">Inicio</a></li>
+                <li><a class="nav-link" href="#about">Nosotros</a></li>
+                <li><a class="nav-link" href="#products">Productos</a></li>
+                <li><a class="nav-link" href="#contact">Contacto</a></li>
             </ul>
             <img src="./assets/img/cart.png" alt="cart" class="cart-icon">
-            <!-- <div class="cart">
+            <div class="cart">
                 <h2>TUS COMPRAS</h2>
                 <div class="cart-container">
                     <div class="cart-item">
@@ -58,7 +58,8 @@
                 <div class="cart-btn">
                     <button>Comprar</button>
                 </div>
-            </div> -->
+            </div>
+            <div class="overlay"></div>
         </nav>
     </header>
 
@@ -138,10 +139,10 @@
                         <input type="number" name="tel" id="tel" placeholder="Ingresá tu teléfono" required>
                     </div>
                     <div><label for="consulta">Ingresá tu consulta</label>
-                        <textarea name="consulta" id="consulta" cols="30" rows="10" placeholder="Igresá tu consulta"
+                        <textarea name="consulta" id="msg" cols="30" rows="10" placeholder="Igresá tu consulta"
                             required></textarea>
                     </div>
-                    <input type="submit" value="Enviar">
+                    <input type="submit" value="Enviar" id="submit">
                 </form>
                 <div class="contact">
                     <iframe
