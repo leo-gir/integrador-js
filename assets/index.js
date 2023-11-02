@@ -108,11 +108,12 @@ const containerCardProducts = document.querySelector('.container-products');
 
 
 
+const contactForm = document.getElementById('form_contact')
 const inputName = document.getElementById('nombre')
 const inputMail = document.getElementById('mail')
-const inputTel = document.getElementById('tel')
+const inputPhone = document.getElementById('tel')
 const inputMsg = document.getElementById('msg')
-const inputSubmit = document.getElementById('submit')
+
 
 // LOCALSTORAGE//
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -176,10 +177,136 @@ const renderProducts = () => {
     containerCardProducts.innerHTML = productsList.map((product) => cardProductTemplate(product)).join('');
 }
 
-
 //VALIDACIÓN FORMULARIO
 
-//VER CLASE 14
+//Auxiliares
+const isEmpty = (input) => {
+  return !input.value.trim().length;
+}
+
+const isMin = (input, min) => {
+  return input.value.length >= min;
+}
+
+const isEmailValid = (input) => {
+  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return re.test(input.value.trim());
+}
+
+const isPhoneValid = (input) => {
+  const re = /^\d{7,15}$/;
+  return re.test(input.value.trim());
+}
+
+const isBetween = (input, min, max) => {
+  return input.value.length >= min && input.value.length < max;
+}
+
+const showError = (input, msg) => {
+  const formField = input.parentElement;
+  formField.classList.remove('success');
+  formField.classList.add('error');
+  const error = formField.querySelector("small");
+  error.style.display = 'block';
+  error.textContent = msg;
+}
+
+const showSuccess = (input) => {
+  const formField = input.parentElement;
+  formField.classList.remove('error');
+  formField.classList.add('success');
+  const error = formField.querySelector("small");
+  error.textContent = '';
+}
+
+//Validación
+const checkName = (input) => {
+  const minChar = 3;
+
+  if(isEmpty(input)){
+    showError(input, "Este campo es obligatorio");
+    return false;
+  }
+
+  if(!isMin(input, minChar)){
+    showError(input,
+      `El nombre debe tener al menos ${minChar} caracteres`
+    );
+    return false;
+  }
+
+  showSuccess(input);
+  return true;
+}
+
+
+const checkMail = (input) => {
+  if(isEmpty(input)){
+    showError(input, "Este campo es obligatorio");
+    return false;
+  }
+
+  if(!isEmailValid(input)) {
+    showError(input, "El mail no es válido");
+    return false;
+  }
+
+  showSuccess(input);
+  return true;
+}
+
+const checkPhone = (input) => {
+  if(isEmpty(input)){
+    showError(input, "Este campo es obligatorio");
+    return false;
+  }
+
+  if(!isPhoneValid(input)){
+    showError(input, `El teléfono no es valido`);
+    return false;
+  }
+
+  showSuccess(input);
+  return true;
+}
+
+const checkMsg = (input) => {
+  const minChar = 15;
+  const maxChar = 300;
+
+  if(isEmpty(input)){
+    showError(input, "Este campo es obligatorio");
+    return false;
+  }
+
+  if(!isBetween(input, minChar, maxChar)){
+    showError(input, `El mensaje debe tener entre ${minChar} y ${maxChar} caracteres`);
+    return false;
+  }
+  showSuccess(input);
+  return true;
+}
+
+const validateForm = (e) => {
+  e.preventDefault();
+
+  const isNameValid = checkName(inputName);
+  const isEmailValid = checkMail(inputMail);
+  const isPhoneValid = checkPhone(inputPhone);
+  const isMsgValid = checkMsg(inputMsg);
+
+  const isValidForm = 
+    isNameValid &&
+    isEmailValid &&
+    isPhoneValid &&
+    isMsgValid;
+
+  if(isValidForm) {
+    alert('El mensaje fue enviado!');
+    contactForm.reset();
+  }
+};
+
 
 
 const init = () => {
@@ -187,6 +314,14 @@ const init = () => {
   overlay.addEventListener('click', closeOnOverlayClick);
   navMenu.addEventListener('click', closeOnClick)
   document.addEventListener('DOMContentLoaded', renderProducts);
+
+  
+  contactForm.addEventListener('submit', validateForm);
+  inputName.addEventListener('input', () => checkName(inputName));
+  inputMail.addEventListener('input', () => checkMail(inputMail));
+  inputPhone.addEventListener('input', () => checkPhone(inputPhone));
+  inputMsg.addEventListener('input', () => checkMsg(inputMsg));
+
 };
 
 init();

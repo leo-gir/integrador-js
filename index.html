@@ -125,22 +125,28 @@
         <section id="contact">
             <h1>Contacto</h1>
             <div class="contacto">
-                <form class="form">
+                <form class="form_container" id="form_contact">
                     <h2>Dejanos tu consulta</h2>
                     <div>
                         <label for="nombre">Nombre:</label>
-                        <input type="text" name="nombre" id="nombre" placeholder="Ingresá tu nombre" required>
+                        <input type="text" name="nombre" id="nombre" placeholder="Ingresá tu nombre" class="form_field" required>
+                        <small></small>
                     </div>
                     <div>
                         <label for="mail">Correo electrónico:</label>
-                        <input type="email" name="mail" id="mail" placeholder="Ingresá tu correo" required>
+                        <input type="email" name="mail" id="mail" placeholder="Ingresá tu correo" class="form_field" required>
+                        <small></small>
                     </div>
-                    <div><label for="tel">Teléfono:</label>
-                        <input type="number" name="tel" id="tel" placeholder="Ingresá tu teléfono" required>
+                    <div>
+                        <label for="tel">Teléfono:</label>
+                        <input type="number" name="tel" id="tel" placeholder="Ingresá tu teléfono" class="form_field" required>
+                        <small></small>
                     </div>
-                    <div><label for="consulta">Ingresá tu consulta</label>
-                        <textarea name="consulta" id="msg" cols="30" rows="10" placeholder="Igresá tu consulta"
+                    <div">
+                        <label for="consulta">Ingresá tu consulta</label>
+                        <textarea name="consulta"  id="msg" cols="30" rows="10" placeholder="Igresá tu consulta"
                             required></textarea>
+                        <small></small>
                     </div>
                     <input type="submit" value="Enviar" id="submit">
                 </form>
