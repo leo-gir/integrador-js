@@ -112,6 +112,7 @@ const cartContainer = document.querySelector('.cart-container');
 const successProduct = document.querySelector('.success-product');
 
 
+
 const containerCardProducts = document.querySelector('.container-products');
 
 const contpro = document.querySelector('.card-products')
@@ -157,50 +158,60 @@ const closeOnClick = (e) => {
 }
 
 
+//CARD PRODUCTOS
 
+const cardProductTemplate = (product) => {
+  const { id, img, name, type, ibu, alcohol, price } = product
+  return `
+  <div class="card-products">
+      <img src="${img}" alt="${name}">
+      <h2>${name}</h2>
+      <h3>${type}</h3>
+      <div class="descrip-prod">
+          <p>IBU ${ibu}</p>
+          <span>/</span>
+          <p>Alcohol ${alcohol}</p>
+      </div>
+      <p class="product-price">$${price}</p>
+      <button class="product-btn"
+          data-id=${id}
+          data-name=${name}
+          data-type=${type}
+          data-price=${price}
+          data-img=${img}>
+      <span class="product-btn-span">Agregar al carrito</span></button>
+      <div class="success-product id='succes-prod'"></div>
+  </div>
+  
+  `;
+};
 
-
-///////////////CARRITO////////////////////
-const productData = (product) => {
-  const { id, img, name, type, price } = product
-  return { id, img, name, type, price }
+const renderProducts = () => {
+  containerCardProducts.innerHTML = productsList.map((product) => cardProductTemplate(product)).join('');
 }
 
 
-const addProduct = (e) => {
-  if(!e.target.classList.contains('product-btn-span') ){ return;}
-  else{console.log('HOLA');}
-  const product = productData(e.target.dataset);
 
-  if(isExistingCartProduct(product)){
-    addUnit(product);
-    showSuccess('Agregaste otra unidad al carrito');
-    console.log('HOLA');
-  } else {
-    createCartProduct(product);
-    showSuccess('Agregaste el producto al carrito');
-    console.log('CHAU');
 
-  }
-  // updateCartState();
-}
 
-// const prueba = (e) => {
-//   if (!e.target.classList.contains('product-btn')) {
-//     console.log('hola')
-//   }
-// }
+
+
+
+
+
+
+//--------------CARRITO------------------
 
 const renderCartProducts = () => {
   if(!cart.length){
     cartContainer.innerHTML = `<p class='empty-cart'> Todavía no agregaste productos al carrito. </p>`
     return;
   }
-  cartContainer.innerHTML = cart.map(createCartProductTemplate).join('');
+  cartContainer.innerHTML = cart.map(cartProductTemplate).join('');
 }
 
 const cartProductTemplate = (e, i) => {
-  const { id, img, name, type, price, quantity } = product
+  const { id, img, name, type, price, quantity } = e;
   return `
     <div class="cart-item">
       <img src=${img} alt="${name}">
@@ -220,13 +231,14 @@ const cartProductTemplate = (e, i) => {
     </div>`;
 }
 
-const showSuccessProduct = (msg) => {
-  successProduct.classList.add('active-modal');
-  successProduct.textContent = msg;
-  setTimeout(() => {
-    successProduct.classList.remove('active-modal');
-  }, 3000);
+
+
+const productData = (product) => {
+  const { id, img, name, type, price } = product
+  return { id, img, name, type, price }
 }
+
+
 
 
 
@@ -238,13 +250,50 @@ const addUnitToProduct = (product) => {
   })
 }
 
+
 const isExistingCartProduct = (product) => {
   return cart.some((item) => item.id === product.id);
 }
 
+
 const createCartProduct = (product) => {
   cart = [...cart, { ...product, quantity: 1 }]
 }
+
+
+const addProduct = (e) => {
+  if(!e.target.classList.contains('product-btn-span') && !e.target.classList.contains('product-btn') ) return; 
+
+  const product = productData(e.target.dataset);
+
+  if(isExistingCartProduct(product)){
+    // addUnit(product);
+    // showSuccessProduct('Agregaste otra unidad al carrito');
+    // console.log('HOLA');
+  } else {
+    createCartProduct(product);
+    // showSuccessProduct('Agregaste el producto al carrito');
+    // console.log('CHAU');
+
+  }
+  updateCartState();
+}
+
+
+// const showSuccessProduct = (msg) => {
+//   successProduct.classList.add('show-success-product');
+//   successProduct.textContent = msg;
+//   setTimeout(() => {
+//     succesProd.classList.remove('show-success-product');
+//   }, 3000);
+// }
+
+
+
+
+
+
+
 
 
 
@@ -266,10 +315,10 @@ const showCartTotal = () => {
 const updateCartState = () => {
   saveCart();
   renderCartProducts();
-  showCartTotal();
-  renderCartBubble();
-  disableBtn(buyBtn);
-  disableBtn(deleteBtn);
+  // showCartTotal();
+  // renderCartBubble();
+  // disableBtn(buyBtn);
+  // disableBtn(deleteBtn);
 }
 
 const handleQuantity = (e) => {
@@ -337,41 +386,13 @@ const disableBtn = (btn) => {
 
 
 
-/////////////////////////////////////////////////
 
 
 
-//CARD PRODUCTOS
 
-const cardProductTemplate = (product) => {
-    const { id, img, name, type, ibu, alcohol, price } = product
-    return `
-    <div class="card-products">
-        <img src="${img}" alt="${name}">
-        <h2>${name}</h2>
-        <h3>${type}</h3>
-        <div class="descrip-prod">
-            <p>IBU ${ibu}</p>
-            <span>/</span>
-            <p>Alcohol ${alcohol}</p>
-        </div>
-        <p class="product-price">$${price}</p>
-        <button class="product-btn"
-            data-id=${id}
-            data-name=${name}
-            data-type=${type}
-            data-price=${price}
-            data-img=${img}>
-        <span class="product-btn-span">Agregar al carrito</span></button>
-        <div class="success-product"></div>
-    </div>
-    
-    `;
-};
 
-const renderProducts = () => {
-    containerCardProducts.innerHTML = productsList.map((product) => cardProductTemplate(product)).join('');
-}
+
+
 
 //VALIDACIÓN FORMULARIO
 
