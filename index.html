@@ -34,7 +34,7 @@
             <div class="cart">
                 <h2>TUS COMPRAS</h2>
                 <div class="cart-container">
-                    <div class="cart-item">
+                    <!-- <div class="cart-item">
                         <img src="./assets/img/Beepure-Belguian.png" alt="">
                         <div class="item-info">
                             <h3 class="item-tittle">Beepure</h3>
@@ -49,12 +49,12 @@
                             <span class="item-quantity">1</span>
                             <span class="quantity-handler up ">+</span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="total">
+                <!-- <div class="total">
                     <h3>Total</h3>
                     <span>$10300</span>
-                </div>
+                </div> -->
                 <div class="cart-btn">
                     <button>Comprar</button>
                 </div>
@@ -119,13 +119,32 @@
                     <li>Filtro por  marca</li>
                     <li>Filtro por cantidad</li>
                 </ul> -->
-            <div class="container-products"></div>
+            <div class="container-products">
+                <!-- <div class="card-products">
+                    <img src="${img}" alt="${name}">
+                    <h2>${name}</h2>
+                    <h3>${type}</h3>
+                    <div class="descrip-prod">
+                        <p>IBU ${ibu}</p>
+                        <span>/</span>
+                        <p>Alcohol ${alcohol}</p>
+                    </div>
+                    <p class="product-price">$${price}</p>
+                    <button class="product-btn"
+                        data-id=${id}
+                        data-name=${name}
+                        data-type=${type}
+                        data-price=${price}
+                        data-img=${img}>
+                    <span>Agregar al carrito</span></button> -->
+                </div>
+            </div>
         </section>
 
         <section id="contact">
             <h1>Contacto</h1>
             <div class="contacto">
-                <form class="form_container" id="form_contact">
+                <form class="form-container" id="form-contact">
                     <h2>Dejanos tu consulta</h2>
                     <div>
                         <label for="nombre">Nombre:</label>
@@ -142,13 +161,13 @@
                         <input type="number" name="tel" id="tel" placeholder="Ingresá tu teléfono" class="form_field" required>
                         <small></small>
                     </div>
-                    <div">
-                        <label for="consulta">Ingresá tu consulta</label>
+                    <div>
+                        <label for="msg">Ingresá tu consulta</label>
                         <textarea name="consulta"  id="msg" cols="30" rows="10" placeholder="Igresá tu consulta"
                             required></textarea>
                         <small></small>
                     </div>
-                    <input type="submit" value="Enviar" id="submit">
+                    <input type="submit" value="Enviar" id="submit" class="form-submit">
                 </form>
                 <div class="contact">
                     <iframe
@@ -167,6 +186,7 @@
                         </div>
                 </div>
             </div>
+        
         </section>
 
     </main>

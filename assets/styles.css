@@ -165,6 +165,14 @@ p{
     border-radius: 10px;
 }
 
+.empty-cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px !important;
+    font-weight: 780;
+}
+
 .item-info{
     display: flex;
     flex-direction: column;
@@ -415,25 +423,41 @@ p{
     display: inline-block;
     position: relative;
     transition: 0.5s;
-  }
+}
   
-  .product-btn span:after {
+.product-btn span:after {
     content: '\1F6D2';
     position: absolute;
     opacity: 0;
     top: 0;
     right: -20px;
     transition: 0.5s;
-  }
+}
   
-  .product-btn:hover span {
+.product-btn:hover span {
     padding-right: 25px;
-  }
+}
   
-  .product-btn:hover span:after {
+.product-btn:hover span:after {
     opacity: 1;
     right: 0;
-  }
+}
+
+.success-product{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--dorado);
+    width: 100%;
+    padding: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.show-success-product{
+    display: flex;
+}
+
 
 /* #contact{
     display: flex;
@@ -480,7 +504,7 @@ p{
     border-radius: 10px;
 }
 
-.form_container{
+.form-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -490,13 +514,13 @@ p{
     padding: 20px;
 }
 
-.form_container h2{
+.form-container h2{
     color: var(--negro);
     font-size: 60px;
     
 }
 
-.form_container label{
+.form-container label{
     display: flex;
     align-items: start;
     justify-content: flex-start;
@@ -506,7 +530,7 @@ p{
     font-size: 25px;
 }
 
-.form_container textarea{
+.form-container textarea{
     border-radius: 3px;
     width: 400px;
     height: 200px;
@@ -514,7 +538,7 @@ p{
     padding: 10px;
 }
 
-.form_container input{
+.form-container input{
     border-radius: 5px;
     width: 400px;
     height: 30px;
@@ -522,7 +546,7 @@ p{
     padding: 10px;
 }
 
-.form_container input[type=submit] {
+.form-container input[type=submit] {
     padding:5px 15px; 
     background: #f4511e; 
     cursor:pointer;
@@ -560,7 +584,7 @@ p{
     padding-right: 40px;
 }
 
-.mapa iframe{
+.contact iframe{
         width: 100%;
         height: 600px;
         padding-right: 20px;

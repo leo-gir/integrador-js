@@ -103,12 +103,21 @@ const productsList = [
 const cartMenu = document.querySelector('.cart');
 const cartIcon = document.querySelector('.cart-icon');
 const overlay = document.querySelector('.overlay');
+
+
 const navMenu = document.querySelector('.nav-list');
+
+
+const cartContainer = document.querySelector('.cart-container');
+const successProduct = document.querySelector('.success-product');
+
+
 const containerCardProducts = document.querySelector('.container-products');
 
+const contpro = document.querySelector('.card-products')
 
 
-const contactForm = document.getElementById('form_contact')
+const contactForm = document.getElementById('form-contact')
 const inputName = document.getElementById('nombre')
 const inputMail = document.getElementById('mail')
 const inputPhone = document.getElementById('tel')
@@ -140,11 +149,196 @@ const closeOnOverlayClick = () => {
   overlay.classList.remove('show-overlay');
 }
 
+// ----------------VER---------------
 const closeOnClick = (e) => {
   if(!e.target.classList.contains('nav-link')) return;
   barsMenu.classList.remove('open-menu');
   overlay.classList.remove('show-overlay');
 }
+
+
+
+
+
+///////////////CARRITO////////////////////
+const productData = (product) => {
+  const { id, img, name, type, price } = product
+  return { id, img, name, type, price }
+}
+
+
+const addProduct = (e) => {
+  if(!e.target.classList.contains('product-btn-span') ){ return;}
+  else{console.log('HOLA');}
+  const product = productData(e.target.dataset);
+
+  if(isExistingCartProduct(product)){
+    addUnit(product);
+    showSuccess('Agregaste otra unidad al carrito');
+    console.log('HOLA');
+  } else {
+    createCartProduct(product);
+    showSuccess('Agregaste el producto al carrito');
+    console.log('CHAU');
+
+  }
+  // updateCartState();
+}
+
+// const prueba = (e) => {
+//   if (!e.target.classList.contains('product-btn')) {
+//     console.log('hola')
+//   }
+// }
+
+const renderCartProducts = () => {
+  if(!cart.length){
+    cartContainer.innerHTML = `<p class='empty-cart'> Todavía no agregaste productos al carrito. </p>`
+    return;
+  }
+  cartContainer.innerHTML = cart.map(createCartProductTemplate).join('');
+}
+
+const cartProductTemplate = (e, i) => {
+  const { id, img, name, type, price, quantity } = product
+  return `
+    <div class="cart-item">
+      <img src=${img} alt="${name}">
+      <div class="item-info">
+        <h3 class="item-tittle">${name}</h3>
+        <p>${type}</p>
+        <div class="item-price">
+          <span>${price}</span>
+        </div>
+      </div>
+
+      <div class="item-handler">
+        <span class="quantity-handler down data-id=${id}">-</span>
+        <span class="item-quantity">${quantity}</span>
+        <span class="quantity-handler up data-id=${id}">+</span>
+      </div>
+    </div>`;
+}
+
+const showSuccessProduct = (msg) => {
+  successProduct.classList.add('active-modal');
+  successProduct.textContent = msg;
+  setTimeout(() => {
+    successProduct.classList.remove('active-modal');
+  }, 3000);
+}
+
+
+
+const addUnitToProduct = (product) => {
+  cart = cart.map((cartProduct) => {
+    return cartProduct.id === product.id
+      ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
+      : cartProduct
+  })
+}
+
+const isExistingCartProduct = (product) => {
+  return cart.some((item) => item.id === product.id);
+}
+
+const createCartProduct = (product) => {
+  cart = [...cart, { ...product, quantity: 1 }]
+}
+
+
+
+const renderCartBubble = () => {
+  cartBubble.textContent = cart.reduce((acc, cur) => acc + cur.quantity, 0);
+}
+
+const showCartBubble = () => {
+  cartBubble.textContent = cart.reduce((acc, cur) => acc + cur.quantity, 0);
+}
+
+const showCartTotal = () => {
+  const total = cart.reduce((acc, cur) => 
+    acc + Number(cur.bid) * cur.quantity, 0)
+
+  cartTotal.textContent = `${total.toFixed(2)} eTH`;
+}
+
+const updateCartState = () => {
+  saveCart();
+  renderCartProducts();
+  showCartTotal();
+  renderCartBubble();
+  disableBtn(buyBtn);
+  disableBtn(deleteBtn);
+}
+
+const handleQuantity = (e) => {
+  if(e.target.classList.contains('down')) {
+    handleMinusBtnEvent(e.target.dataset.id)
+  } else if (e.target.classList.contains('up')) {
+    handlePlusBtnEvent(e.target.dataset.id)
+  }
+  updateCartState();
+}
+
+const handleMinusBtnEvent = (id) => {
+  const existingCartProduct = cart.find((item) => item.id === id);
+  console.log(existingCartProduct)
+  if(existingCartProduct.quantity === 1){
+    removeProductFromCart(existingCartProduct);
+    return;
+  }
+  substractProductUnit(existingCartProduct);
+}
+
+const removeProductFromCart = (product) => {
+  cart = cart.filter((prod) => prod.id !== product.id);
+}
+
+const substractProductUnit = (product) => {
+  cart = cart.map((prod) => {
+    return prod.id === product.id
+      ? { ...prod, quantity: Number(product.quantity) - 1 }
+      : prod;
+  })
+}
+
+const handlePlusBtnEvent = (id) => {
+  const existingCartProduct = cart.find((item) => item.id === id);
+  addUnitToProduct(existingCartProduct);
+}
+
+const deleteCart = () => {
+  if(window.confirm('Estás seguro que queres vaciar el carrito?')) {
+    resetCartItems();
+    alert('tu carrito está vacío')
+  }
+}
+
+const resetCartItems = () => {
+  cart = [];
+  updateCartState();
+}
+
+const completeBuy = () => {
+  if(window.confirm('Desea completar su comlpra?')) {
+    resetCartItems();
+    alert('Gracias por su compra!')
+  }
+}
+
+const disableBtn = (btn) => {
+  if(cart.length) {
+    btn.classList.remove('disabled');
+  } else {
+    btn.classList.add('disabled');
+  }
+}
+
+
+
+/////////////////////////////////////////////////
+
 
 
 //CARD PRODUCTOS
@@ -167,9 +361,11 @@ const cardProductTemplate = (product) => {
             data-name=${name}
             data-type=${type}
             data-price=${price}
-            data-img=${img}
-        ><span>Agregar al carrito</span></button>
+            data-img=${img}>
+        <span class="product-btn-span">Agregar al carrito</span></button>
+        <div class="success-product"></div>
     </div>
+    
     `;
 };
 
@@ -312,8 +508,23 @@ const validateForm = (e) => {
 const init = () => {
   cartIcon.addEventListener('click', toggleCart);
   overlay.addEventListener('click', closeOnOverlayClick);
-  navMenu.addEventListener('click', closeOnClick)
+  navMenu.addEventListener('click', closeOnClick);
   document.addEventListener('DOMContentLoaded', renderProducts);
+
+
+
+  window.addEventListener('DOMContentLoaded', renderCartProducts);
+  // window.addEventListener('DOMContentLoaded', showCartBubble);
+  // window.addEventListener('DOMContentLoaded', showCartTotal);
+  containerCardProducts.addEventListener('click', addProduct);
+  // cartContainer.addEventListener('click', handleQuantity);
+  // buyBtn.addEventListener('click', completeBuy);
+  // deleteBtn.addEventListener('click', deleteCart);
+  // disableBtn(buyBtn);
+  // disableBtn(deleteBtn);
+
+
+
 
   
   contactForm.addEventListener('submit', validateForm);
