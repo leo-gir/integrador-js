@@ -109,6 +109,7 @@ const navMenu = document.querySelector('.nav-list');
 
 
 const cartContainer = document.querySelector('.cart-container');
+const cartTotal = document.querySelector('.cart-total')
 const successProduct = document.querySelector('.success-product');
 
 
@@ -179,7 +180,15 @@ const cardProductTemplate = (product) => {
           data-type=${type}
           data-price=${price}
           data-img=${img}>
-      <span class="product-btn-span">Agregar al carrito</span></button>
+          
+          <span class="product-btn-span"
+            data-id=${id}
+            data-name=${name}
+            data-type=${type}
+            data-price=${price}
+            data-img=${img}>Agregar al carrito
+          </span>
+        </button>
       <div class="success-product id='succes-prod'"></div>
   </div>
   
@@ -219,14 +228,14 @@ const cartProductTemplate = (e, i) => {
         <h3 class="item-tittle">${name}</h3>
         <p>${type}</p>
         <div class="item-price">
-          <span>${price}</span>
+          <span>$${price}</span>
         </div>
       </div>
 
       <div class="item-handler">
-        <span class="quantity-handler down data-id=${id}">-</span>
+        <span class="quantity-handler down" data-id=${id}>-</span>
         <span class="item-quantity">${quantity}</span>
-        <span class="quantity-handler up data-id=${id}">+</span>
+        <span class="quantity-handler up" data-id=${id}>+</span>
       </div>
     </div>`;
 }
@@ -242,7 +251,7 @@ const productData = (product) => {
 
 
 
-const addUnitToProduct = (product) => {
+const addUnit = (product) => {
   cart = cart.map((cartProduct) => {
     return cartProduct.id === product.id
       ? { ...cartProduct, quantity: cartProduct.quantity + 1 }
@@ -262,12 +271,12 @@ const createCartProduct = (product) => {
 
 
 const addProduct = (e) => {
-  if(!e.target.classList.contains('product-btn-span') && !e.target.classList.contains('product-btn') ) return; 
+  if(!e.target.classList.contains('product-btn-span') && !e.target.classList.contains('product-btn')) return; 
 
   const product = productData(e.target.dataset);
 
   if(isExistingCartProduct(product)){
-    // addUnit(product);
+    addUnit(product);
     // showSuccessProduct('Agregaste otra unidad al carrito');
     // console.log('HOLA');
   } else {
@@ -290,13 +299,7 @@ const addProduct = (e) => {
 
 
 
-
-
-
-
-
-
-
+/// ---------------FALTA VER----------- ///
 const renderCartBubble = () => {
   cartBubble.textContent = cart.reduce((acc, cur) => acc + cur.quantity, 0);
 }
@@ -307,15 +310,18 @@ const showCartBubble = () => {
 
 const showCartTotal = () => {
   const total = cart.reduce((acc, cur) => 
-    acc + Number(cur.bid) * cur.quantity, 0)
+    acc + Number(cur.price) * cur.quantity, 0)
 
-  cartTotal.textContent = `${total.toFixed(2)} eTH`;
+  cartTotal.textContent = `$${total}`;
 }
+/// ---------------FALTA VER----------- ///
+
+
 
 const updateCartState = () => {
   saveCart();
   renderCartProducts();
-  // showCartTotal();
+  showCartTotal();
   // renderCartBubble();
   // disableBtn(buyBtn);
   // disableBtn(deleteBtn);
@@ -354,9 +360,13 @@ const substractProductUnit = (product) => {
 
 const handlePlusBtnEvent = (id) => {
   const existingCartProduct = cart.find((item) => item.id === id);
-  addUnitToProduct(existingCartProduct);
+  addUnit(existingCartProduct);
 }
 
+
+
+
+/// ---------------FALTA VER----------- ///
 const deleteCart = () => {
   if(window.confirm('Estás seguro que queres vaciar el carrito?')) {
     resetCartItems();
@@ -383,7 +393,7 @@ const disableBtn = (btn) => {
     btn.classList.add('disabled');
   }
 }
-
+/// ---------------FALTA VER----------- ///
 
 
 
@@ -536,9 +546,9 @@ const init = () => {
 
   window.addEventListener('DOMContentLoaded', renderCartProducts);
   // window.addEventListener('DOMContentLoaded', showCartBubble);
-  // window.addEventListener('DOMContentLoaded', showCartTotal);
+  window.addEventListener('DOMContentLoaded', showCartTotal);
   containerCardProducts.addEventListener('click', addProduct);
-  // cartContainer.addEventListener('click', handleQuantity);
+  cartContainer.addEventListener('click', handleQuantity);
   // buyBtn.addEventListener('click', completeBuy);
   // deleteBtn.addEventListener('click', deleteCart);
   // disableBtn(buyBtn);

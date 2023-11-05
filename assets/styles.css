@@ -135,17 +135,20 @@ p{
 }
 
 .cart h3{
-    font-size: 25px;
+    font-size: 30px;
     color: white;
     text-align: center;
+    font-weight: 700;
 }
 
 .cart p{
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .cart span{
-    font-size: 20px;
+    font-size: 26px;
+    font-weight: 700;
 }
 
 .cart-item{
