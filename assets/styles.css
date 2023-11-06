@@ -50,6 +50,9 @@ p{
     font-size: 22px;
 }
 
+
+
+
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -79,10 +82,12 @@ p{
     cursor: pointer;
 }
 
+
 .cart-icon{
     width: 35px;
     cursor: pointer;
 }
+
 
 /* CARRITO */
 
@@ -92,6 +97,23 @@ p{
     align-items: end;
     cursor: pointer;
 }
+
+.cart-icon-qty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    text-align: center;
+    top: 10px;
+    right: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+    height: 20px;
+    width: 20px;
+    background: var(--dorado);
+    border-radius: 50%;
+  }
 
 .cart{
     width: calc(100vw - 70%);
@@ -232,6 +254,10 @@ p{
     justify-content: center;
     align-items:center;
     margin-top: 30px;
+}
+
+.hide-cart-btn{
+    display: none;
 }
 
 .cart-btn button{

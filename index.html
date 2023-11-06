@@ -18,19 +18,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./assets/mediaqueries.css">
 </head>
 
 <body>
     <header id="header">
         <nav class="navbar">
-            <img src="./assets/img/logo2.png" alt="logo" class="nav-logo">
+                
+            <div>
+                <img src="./assets/img/logo2.png" alt="logo" class="nav-logo">
+            </div>
+            
             <ul class="nav-list">
                 <li><a class="nav-link" href="#hero">Inicio</a></li>
                 <li><a class="nav-link" href="#about">Nosotros</a></li>
                 <li><a class="nav-link" href="#products">Productos</a></li>
                 <li><a class="nav-link" href="#contact">Contacto</a></li>
             </ul>
-            <img src="./assets/img/cart.png" alt="cart" class="cart-icon">
+            
+            <div class="cart-icon">
+                <img src="./assets/img/cart.png" alt="cart" class="cart-icon">
+                <div class="cart-icon-qty">0</div>
+            </div>
+            
+            
+            
+
             <div class="cart">
                 <h2>TUS COMPRAS</h2>
                 <div class="cart-container">
@@ -65,6 +78,7 @@
 
     <main id="main">
         <section id="hero">
+            
             <img src="./assets/img/hero.png" alt="hero" class="hero-img">
         </section>
 
