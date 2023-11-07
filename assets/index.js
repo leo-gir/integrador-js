@@ -246,10 +246,14 @@ const cartProductTemplate = (e) => {
       </div>
 
       <div class="item-handler">
-        <span class="quantity-handler down" data-id=${id}>-</span>
-        <span class="item-quantity">${quantity}</span>
-        <span class="quantity-handler up" data-id=${id}>+</span>
-      </div>
+        <div class="item-qty">
+          <span class="quantity-handler down" data-id=${id}>-</span>
+          <span class="item-quantity">${quantity}</span>
+          <span class="quantity-handler up" data-id=${id}>+</span>
+        </div>
+        <dic class="item-delete">
+          <span class="delete"> Eliminar </span>
+        </div>
     </div>`;
 }
 
@@ -297,7 +301,7 @@ const addProduct = (e) => {
     // showSuccessProduct('Agregaste el producto al carrito');
 
   }
-  updateCartState();
+  updateCart();
 }
 
 
@@ -331,7 +335,7 @@ const showCartTotal = () => {
 
 
 
-const updateCartState = () => {
+const updateCart = () => {
   saveCart();
   renderCartProducts();
   showCartTotal();
@@ -346,7 +350,7 @@ const handleQuantity = (e) => {
   } else if (e.target.classList.contains('up')) {
     handlePlusBtnEvent(e.target.dataset.id)
   }
-  updateCartState();
+  updateCart();
 }
 
 const handleMinusBtnEvent = (id) => {
@@ -380,22 +384,31 @@ const handlePlusBtnEvent = (id) => {
 
 
 /// ---------------FALTA VER----------- ///
-const deleteCart = () => {
-  if(window.confirm('Estás seguro que queres vaciar el carrito?')) {
-    resetCartItems();
-    alert('tu carrito está vacío')
+
+// const deleteProduct = (e) => {
+//   if(e.target.classList.contains('delete')) {
+//     console.log('delete')
+//     const existingCartProduct = cart.find((item) => item.id === id);
+//     cart = cart.filter((prod) => prod.id !== product.id);
+//   } 
+// }
+
+
+const deleteAllCart = () => {
+  if(window.confirm('¿Querés eliminar todos los productos seleccionados del carrito?')) {
+    clearCart();
   }
 }
 
-const resetCartItems = () => {
+const clearCart = () => {
   cart = [];
-  updateCartState();
+  updateCart();
 }
 
-const completeBuy = () => {
-  if(window.confirm('Desea completar su compra?')) {
-    resetCartItems();
-    alert('Gracias por su compra!')
+const cartBuy = () => {
+  if(window.confirm('¿Querés finalizar la compra?')) {
+    clearCart();
+    alert('Compra realizada con éxito')
   }
 }
 
@@ -567,6 +580,7 @@ const init = () => {
   // deleteBtn.addEventListener('click', deleteCart);
   hideBtn(cartBtn);
   // disableBtn(deleteBtn);
+  cartContainer.addEventListener('click', deleteProduct);
 
 
 

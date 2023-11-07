@@ -219,23 +219,50 @@ p{
     display: flex;
     justify-content: center;
     align-items:center;
+    flex-direction: column;
+    /* color: var(--negro);
+    gap: 15px;
+    border: black 2px solid;
+    border-radius: 10px;
+    padding: 0 10px;
+    background-color: var(--gris); */
+}
+
+.item-qty{
+    display: flex;
+    justify-content: center;
+    align-items:center;
     color: var(--negro);
     gap: 15px;
+    border: black 2px solid;
+    border-radius: 10px;
+    padding: 0 10px;
+    background-color: var(--gris);
 }
 
 .quantity-handler{
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+.item-delete{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    cursor: pointer;
+}
+
+.item-delete span{
+    font-size: 12px;   
 }
 
 .down,
 .up{
     
-    border: var(--negro) 1px solid;
-    border-radius: 5px;
-    padding: 5px 8px;
+    /* border: var(--negro) 1px solid; */
+    /* border-radius: 5px; */
+    /* padding: 5px 8px; */
     cursor: pointer;
 }
 
