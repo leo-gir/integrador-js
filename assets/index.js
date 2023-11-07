@@ -251,7 +251,7 @@ const cartProductTemplate = (e) => {
           <span class="item-quantity">${quantity}</span>
           <span class="quantity-handler up" data-id=${id}>+</span>
         </div>
-        <dic class="item-delete">
+        <div class="item-delete">
           <span class="delete"> Eliminar </span>
         </div>
     </div>`;
@@ -388,10 +388,20 @@ const handlePlusBtnEvent = (id) => {
 // const deleteProduct = (e) => {
 //   if(e.target.classList.contains('delete')) {
 //     console.log('delete')
-//     const existingCartProduct = cart.find((item) => item.id === id);
+//     handleMinusBtnEvent(e.target.dataset.id)
 //     cart = cart.filter((prod) => prod.id !== product.id);
 //   } 
 // }
+
+// const handleDeleteBtnEvent = (id) => {
+//   const existingCartProduct = cart.find((item) => item.id === id);
+//   console.log(existingCartProduct)
+
+
+
+
+
+
 
 
 const deleteAllCart = () => {
