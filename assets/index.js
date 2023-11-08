@@ -118,14 +118,14 @@ const cartIconQty = document.querySelector('.cart-icon-qty');
 
 const containerCardProducts = document.querySelector('.container-products');
 
-const contpro = document.querySelector('.card-products')
+// const contpro = document.querySelector('.card-products')
 
 
-const contactForm = document.getElementById('form-contact')
-const inputName = document.getElementById('nombre')
-const inputMail = document.getElementById('mail')
-const inputPhone = document.getElementById('tel')
-const inputMsg = document.getElementById('msg')
+const contactForm = document.getElementById('form-contact');
+const inputName = document.getElementById('nombre');
+const inputMail = document.getElementById('mail');
+const inputPhone = document.getElementById('tel');
+const inputMsg = document.getElementById('msg');
 
 
 // LOCALSTORAGE//
@@ -196,8 +196,8 @@ const cardProductTemplate = (product) => {
           
           <span class="product-btn-span"
             data-id=${id}
-            data-name=${name}
-            data-type=${type}
+            data-name="${name}"
+            data-type="${type}"
             data-price=${price}
             data-img=${img}>Agregar al carrito
           </span>
@@ -235,26 +235,27 @@ const renderCartProducts = () => {
 const cartProductTemplate = (e) => {
   const { id, img, name, type, price, quantity } = e;
   return `
-    <div class="cart-item">
-      <img src=${img} alt="${name}">
-      <div class="item-info">
-        <h3 class="item-tittle">${name}</h3>
-        <p>${type}</p>
-        <div class="item-price">
+  <div class="cart-item">
+    <img src=${img} alt="${name}">
+    <div class="item-info">
+      <h3 class="item-tittle">${name}</h3>
+      <p>${type}</p>
+      <div class="item-price">
           <span>$${price}</span>
-        </div>
       </div>
+    </div>
 
-      <div class="item-handler">
-        <div class="item-qty">
+    <div class="item-handler">
+      <div class="item-qty">
           <span class="quantity-handler down" data-id=${id}>-</span>
           <span class="item-quantity">${quantity}</span>
           <span class="quantity-handler up" data-id=${id}>+</span>
-        </div>
-        <div class="item-delete">
-          <span class="delete"> Eliminar </span>
-        </div>
-    </div>`;
+      </div>
+      <div class="item-delete">
+          <span class="delete" data-id=${id}> Eliminar </span>
+      </div>
+    </div>
+  </div>`;
 }
 
 
@@ -353,6 +354,13 @@ const handleQuantity = (e) => {
   updateCart();
 }
 
+
+const handlePlusBtnEvent = (id) => {
+  const existingCartProduct = cart.find((item) => item.id === id);
+  addUnit(existingCartProduct);
+}
+
+
 const handleMinusBtnEvent = (id) => {
   const existingCartProduct = cart.find((item) => item.id === id);
   console.log(existingCartProduct)
@@ -362,6 +370,8 @@ const handleMinusBtnEvent = (id) => {
   }
   substractProductUnit(existingCartProduct);
 }
+
+
 
 const removeProductFromCart = (product) => {
   cart = cart.filter((prod) => prod.id !== product.id);
@@ -375,27 +385,59 @@ const substractProductUnit = (product) => {
   })
 }
 
-const handlePlusBtnEvent = (id) => {
-  const existingCartProduct = cart.find((item) => item.id === id);
-  addUnit(existingCartProduct);
+
+
+
+
+const deleteProduct = (e) => {
+  if(e.target.classList.contains('delete')) {
+    console.log('delete')
+    handleDeleteBtnEvent(e.target.dataset.id)
+  } 
 }
+
+const handleDeleteBtnEvent = (id) => {
+  const existingCartProduct = cart.find((item) => item.id === id);
+  removeProductFromCart(existingCartProduct);
+  console.log("handleDeleteBtnEvent");
+  updateCart();
+}
+
+
+
+
+
+
+
+
 
 
 
 
 /// ---------------FALTA VER----------- ///
 
-// const deleteProduct = (e) => {
-//   if(e.target.classList.contains('delete')) {
-//     console.log('delete')
-//     handleMinusBtnEvent(e.target.dataset.id)
-//     cart = cart.filter((prod) => prod.id !== product.id);
-//   } 
-// }
 
-// const handleDeleteBtnEvent = (id) => {
-//   const existingCartProduct = cart.find((item) => item.id === id);
-//   console.log(existingCartProduct)
+
+
+
+
+  // const handleMinusBtnEvent = (id) => {
+  //   const existingCartProduct = cart.find((item) => item.id === id);
+  //   console.log(existingCartProduct)
+  //   if(existingCartProduct.quantity === 1){
+  //     removeProductFromCart(existingCartProduct);
+  //     return;
+  //   }
+  //   substractProductUnit(existingCartProduct);
+  // }
+  
+  // const removeProductFromCart = (product) => {
+  //   cart = cart.filter((prod) => prod.id !== product.id);
+  // }
+
+
+
+
 
 
 

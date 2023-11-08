@@ -1,6 +1,3 @@
-/* @font-face {
-} */
-
 * {
     margin: 0;
     padding: 0;
@@ -125,7 +122,7 @@ p{
 }
 
 .cart{
-    width: calc(100vw - 70%);
+    width: calc(100vw - 60%);
     height: calc(100vh - 150px);
     position: absolute;
     top: 60px;
@@ -188,7 +185,7 @@ p{
     align-items: center;
     width: 80%;
     background-color: var(--dorado);
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     padding: 20px;
     border-radius: 10px;
     border: var(--gris) 1px solid;
@@ -204,7 +201,7 @@ p{
     justify-content: center;
     align-items: center;
     font-size: 18px !important;
-    font-weight: 780;
+    font-weight: 700;
 }
 
 .item-info{
@@ -220,12 +217,6 @@ p{
     justify-content: center;
     align-items:center;
     flex-direction: column;
-    /* color: var(--negro);
-    gap: 15px;
-    border: black 2px solid;
-    border-radius: 10px;
-    padding: 0 10px;
-    background-color: var(--gris); */
 }
 
 .item-qty{
@@ -273,7 +264,7 @@ p{
     flex-direction: row;
     width: 100%;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
 }
 
 .total h3{
@@ -289,7 +280,7 @@ p{
     display: flex;
     justify-content: center;
     align-items:center;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .hide-cart-btn{
@@ -347,6 +338,7 @@ p{
     justify-content: center;
     align-items: center;
     margin-top: 90px;
+    width: 100%;
 }
 
 #about h1,
@@ -356,12 +348,12 @@ p{
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 100%;
+    color: var(--marron);
+    /* width: 100%; */
     /* max-height: 90px; */
     /* background-color: var(--marron); */
     /* border-radius:  80px 80px 80px 80px; */
     /* border: 1px solid var(--marron); */
-    color: var(--marron);
 }
 
 .container-about{
@@ -378,12 +370,12 @@ p{
     /* box-shadow: 10px 8px 10px rgba(0, 0, 0, 0.519); */
 }
 
-.card-about{
+    .card-about{
     display:flex;
     flex-direction:column;
     justify-content: center;
     align-items: center;
-    width: 25%;
+    width: 33%;
     /* padding: 15px; */
     text-align: center;
     /* border: 2px solid var(--marron); */
@@ -403,6 +395,7 @@ p{
     align-items: center;
     flex-direction: column;
     padding: 15px;
+    min-height: 378px;
 }
 
 
@@ -430,7 +423,7 @@ p{
     flex-direction:column;
     justify-content: center;
     align-items: center;
-    width: 20%;
+    width: 25%;
     padding: 15px;
     text-align: center;
     border: 1px solid var(--marron);
@@ -555,6 +548,7 @@ p{
     flex-direction: column;
     width: 100%;
     margin-top: 90px;
+    
 
 }
 
@@ -569,13 +563,17 @@ p{
     border-radius: 10px;
 }
 
+.contact{
+    width: 50%;
+}
+
 .form-container{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 45%;
-    gap: 10px;
+    width: 50%;
+    gap: 10px;  
     padding: 20px;
 }
 
@@ -646,7 +644,7 @@ p{
     flex-direction: column;
     width: 55%;
     height: 100%;
-    padding-right: 40px;
+    padding: 40px;
 }
 
 .contact iframe{
