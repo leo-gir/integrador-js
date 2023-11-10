@@ -142,7 +142,7 @@ p{
 }
 
 .show-cart {
-    transform: translateX(0%);
+    transform: translateX(-1%);
     transition: all 0.5s ease;
     z-index: 2;
 }
@@ -250,10 +250,6 @@ p{
 
 .down,
 .up{
-    
-    /* border: var(--negro) 1px solid; */
-    /* border-radius: 5px; */
-    /* padding: 5px 8px; */
     cursor: pointer;
 }
 
@@ -283,11 +279,8 @@ p{
     margin-top: 10px;
 }
 
-.hide-cart-btn{
-    display: none;
-}
 
-.cart-btn button{
+.buyBtn{
     padding:5px 15px; 
     background: #f4511e; 
     cursor:pointer;
@@ -298,6 +291,13 @@ p{
     height: 50px;
     color: white;
     font-size: 18px;
+}
+
+.disabled {
+    background-color: var(--gris);
+    color: rgb(121, 121, 121);
+    cursor: not-allowed;
+    border: none;
 }
 
 .overlay{
@@ -324,6 +324,7 @@ p{
     justify-content: center;
     align-items: center;
     box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.619);
+    width: 100%;
 }
 
 .hero-img{
@@ -349,11 +350,6 @@ p{
     align-items: center;
     text-align: center;
     color: var(--marron);
-    /* width: 100%; */
-    /* max-height: 90px; */
-    /* background-color: var(--marron); */
-    /* border-radius:  80px 80px 80px 80px; */
-    /* border: 1px solid var(--marron); */
 }
 
 .container-about{
@@ -364,10 +360,7 @@ p{
     width: 100%;
     padding: 0 30px;
     gap:25px;
-    /* background-color: var(--verde); */
     border-radius: 15px;
-    /* margin: 0 35px 0 35px; */
-    /* box-shadow: 10px 8px 10px rgba(0, 0, 0, 0.519); */
 }
 
     .card-about{
@@ -376,9 +369,7 @@ p{
     justify-content: center;
     align-items: center;
     width: 33%;
-    /* padding: 15px; */
     text-align: center;
-    /* border: 2px solid var(--marron); */
     border-radius: 10px;
     background-color: var(--gris);
     box-shadow: 10px 8px 10px rgba(0, 0, 0, 0.519)
@@ -407,9 +398,51 @@ p{
     margin-top: 90px;
 }
 
+.filter-products{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.filter-products h3{
+    margin-bottom: 15px;
+}
+
+.filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 20px;
+    width: 80%;
+    flex-wrap: wrap;
+}
+
+.category{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:5px 15px; 
+    background: #f4511e; 
+    cursor:pointer;
+    border-radius: 8px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    width: 100px;
+    height: 50px;
+    color: var(--gris);
+    font-size: 20px;
+    text-align: center;
+}
+
+.active{
+    border: 1px solid var(--marron);
+}
+
 .container-products{
     display:flex;
-    /* flex-direction:column; */
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -470,7 +503,6 @@ p{
     text-align: center;
     font-size: 18px;
     padding: 15px;
-    /* width: 200px; */
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
@@ -482,7 +514,7 @@ p{
     position: relative;
     transition: 0.5s;
 }
-  
+
 .product-btn span:after {
     content: '\1F6D2';
     position: absolute;
@@ -491,55 +523,15 @@ p{
     right: -20px;
     transition: 0.5s;
 }
-  
+
 .product-btn:hover span {
     padding-right: 25px;
 }
-  
+
 .product-btn:hover span:after {
     opacity: 1;
     right: 0;
 }
-
-.success-product{
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--dorado);
-    width: 100%;
-    padding: 5px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.show-success-product{
-    display: flex;
-}
-
-
-/* #contact{
-    display: flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;   
-}
-
-.contacto{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--gris);
-    margin: 35px;
-    width: 80%;
-}
-
-.form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-} */
-
 
 #contact{
     display: flex;
@@ -548,8 +540,6 @@ p{
     flex-direction: column;
     width: 100%;
     margin-top: 90px;
-    
-
 }
 
 .contacto{
@@ -622,10 +612,6 @@ p{
     font-size: 18px;
 }
 
-/* .form_field textarea{
-    border: 2px solid blue;
-} */
-
 .success input,
 .success textarea{
     border: 1.5px solid rgb(43, 114, 43);
@@ -691,13 +677,26 @@ p{
 }
 
 
+.social,
+.footer-logo,
+.design{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 29%;
+}
+
+.design{
+    flex-direction: column;
+}
+
+.social{
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
 .social img{
     width: 80px;
-}
-
-.footer-logo img{
-    width: 100%;
 }
 
 .design{

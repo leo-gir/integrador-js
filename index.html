@@ -51,30 +51,15 @@
 
             <div class="cart">
                 <h2>TUS COMPRAS</h2>
-                <div class="cart-container">
-                    <!-- <div class="cart-item">
-                        <img src="./assets/img/Beepure-Belguian.png" alt="">
-                        <div class="item-info">
-                            <h3 class="item-tittle">Beepure</h3>
-                            <p>Belguian White x500ml</p>
-                            <div class="item-price">
-                                <span>$1000</span>
-                            </div>
-                        </div>
 
-                        <div class="item-handler">
-                            <span class="quantity-handler down">-</span>
-                            <span class="item-quantity">1</span>
-                            <span class="quantity-handler up ">+</span>
-                        </div>
-                    </div> -->
-                </div>
+                <div class="cart-container"></div>
+
                 <div class="total">
                     <h3>Total</h3>
                     <span class="cart-total"></span>
                 </div>
-                <div class="cart-btn">
-                    <button>Comprar</button>
+                <div class="cart-btn" id="cart-btn">
+                    <button class="buyBtn" id="buyBtn">Comprar</button>
                 </div>
             </div>
             <div class="overlay"></div>
@@ -127,38 +112,21 @@
 
         <section id="products">
             <h1>Productos</h1>
-            <!-- <div class="products-container">
-                <ul>
-                    <li>Ordenar por precio ascendente</li>
-                    <li>Ordenar por precio descendente</li>
-                    <li>Ordenar por nombre A-Z</li>
-                    <li>Ordenar por nombre Z-A</li>
+            <div class="filter-products">
+                <h3>Elegí el tipo de cerveza que buscás: </h3>
+                <ul class="filter">
+                    <li class="category active">Todas</li>
+                    <li class="category" data-category="APA">APA</li>
+                    <li class="category" data-category="Belguian">Belguian</li>
+                    <li class="category" data-category="Honey">Honey</li>
+                    <li class="category" data-category="IPA">IPA</li>
+                    <li class="category" data-category="Kolsch">Kolsch</li>
+                    <li class="category" data-category="Negra">Negra</li>
                 </ul>
-                <ul>
-                    <li>Filtro por  marca</li>
-                    <li>Filtro por cantidad</li>
-                </ul> -->
-            <div class="container-products">
-                <!-- <div class="card-products">
-                    <img src="${img}" alt="${name}">
-                    <h2>${name}</h2>
-                    <h3>${type}</h3>
-                    <div class="descrip-prod">
-                        <p>IBU ${ibu}</p>
-                        <span>/</span>
-                        <p>Alcohol ${alcohol}</p>
-                    </div>
-                    <p class="product-price">$${price}</p>
-                    <button class="product-btn"
-                        data-id=${id}
-                        data-name=${name}
-                        data-type=${type}
-                        data-price=${price}
-                        data-img=${img}>
-                    <span class="product-btn-span">Agregar al carrito</span></button> -->
-                    <!-- <div class="success-product" id='succes-prod'></div> -->
-                </div>
             </div>
+
+            <div class="container-products"></div>
+
         </section>
 
         <section id="contact">

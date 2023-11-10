@@ -4,14 +4,6 @@
         width: calc(100vw - 50%);
     }
 
-    /* .cart h2{
-        font-size: 35px;
-    } */
-
-    /* .empty-cart{
-        font-size: 15px !important;
-    } */
-
     .cart h3{
         font-size: 30px;
     }
@@ -70,7 +62,6 @@
 }
 
 
-
 /* RESPONSIVE 992 px - 769 px */
 @media(max-width: 992px){
     .show-menu-icon{
@@ -81,7 +72,7 @@
     }
     
     .nav-list{
-        width: 40%;
+        width: 50%;
         height: calc(100vh - 300px);
         position: absolute;
         top: 60px;
@@ -104,12 +95,74 @@
         color: black;
     }
     
-    
-    .open-menu {
+    .show-menu {
         display: flex;
         transform: translateX(0%);
         transition: all 0.5s ease;
         z-index: 2;
+    }
+
+    .cart{
+        width: calc(100vw - 30%);
+    }
+
+    #about{
+        margin-top: 30px;
+    }
+
+    #about h1,
+    #products h1,
+    #contact h1{
+        font-size: 70px;
+    }
+
+    .container-about{
+        flex-direction: column;
+    }
+
+    .card-info{
+        min-height: 0;
+    }
+
+    .container-products{
+        width: 90%;
+    }
+
+    .card-products{
+        width: 300px;
+    }
+
+    .contacto{
+        flex-direction: column;
+        justify-content: center;
+        width: 85%;
+    }
+
+    .form-container{
+        width: 80%;
+        border: 1px solid var(--marron);
+        margin-top: 30px;
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .form-container h2{
+        width: 100%;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .form-container input[type=submit]{
+        margin-top:  10px;
+    }
+
+    .contact iframe{
+        width: 600px;
+        padding: 0;
+    }
+    
+    .tel{
+        max-width: 600px;
     }
 }
 
@@ -117,14 +170,102 @@
 
 /* RESPONSIVE 768 px - 577 px */
 @media(max-width: 768px){
+    .nav-list{
+        width: 80%;
+        height: calc(100vh - 300px);
+    }
 
+    .cart{
+        width: 100vw;
+    }
+
+    .card-about{
+        width: 80%;
+    }
+
+    .card-products{
+        width: 70%;
+    }
+
+    .contacto{
+        width: 90%;
+    }
+
+    .form-container textarea,
+    .form-container input{
+        width: 350px;
+    }
+
+    .contact iframe{
+        max-width: 500px;
+        padding: 0;
+    }
+    
+    #footer{
+        flex-direction: column;
+    }
+
+    .social,
+    .footer-logo,
+    .design{
+        width: 80%;
+        margin-bottom: 30px;
+    }
+
+    .tel{
+        width: 500px;
+    }
 }
 
 
 
 /* RESPONSIVE 576 px - 320 px */
 @media(max-width: 576px){
+    #about h1,
+    #products h1,
+    #contact h1{
+        font-size: 50px ;
+    }
 
+    .card-about{
+        width: 100%;
+    }
+
+    .container-products{
+        width: 100%;
+    }
+
+    .card-products{
+        width: 85%;
+    }
+
+    .contact{
+        width: 85%;
+    }
+
+    .form-container{
+        width: 90%;
+        padding: 8px;
+    }
+
+    .form-container h2{
+        font-size: 30px;
+    }
+
+    .form-container textarea,
+    .form-container input{
+        width: 250px;
+    }
+
+    .tel{
+        flex-direction: column;
+        width: 280px;
+    }
+
+    .contact iframe{
+        max-width: 280px;
+        padding: 0;
+    }
 }
 
 

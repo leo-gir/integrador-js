@@ -4,6 +4,7 @@ const productsList = [
     img: "./assets/img/Beepure-Belguian.png",
     name: "Beepure",
     type: "Belguian White x500ml",
+    category: "Belguian",
     ibu: 14,
     alcohol: "4,7%",
     price: 1000,
@@ -14,6 +15,7 @@ const productsList = [
     img: "./assets/img/Blest-Ipa.png",
     name: "Blest",
     type: "IPA x355ml",
+    category: "IPA",
     ibu: 48,
     alcohol: "6,5%",
     price: 1290,
@@ -24,6 +26,7 @@ const productsList = [
     img: "./assets/img/Blest-Apa.png",
     name: "Blest",
     type: "APA x355ml",
+    category: "APA",
     ibu: 50,
     alcohol: "5,5%",
     price: 1290,
@@ -34,6 +37,7 @@ const productsList = [
     img: "./assets/img/Rastel-Honey.png",
     name: "Rastel",
     type: "Honey x1000ml",
+    category: "Honey",
     ibu: 17,
     alcohol: "5,6%",
     price: 1260,
@@ -44,6 +48,7 @@ const productsList = [
     img: "./assets/img/BarbaRoja-Calafate.png",
     name: "Barba Roja",
     type: "Negra con frutos rojos x500ml",
+    category: "Negra",
     ibu: 18,
     alcohol: "4,5%",
     price: 1500,
@@ -54,6 +59,7 @@ const productsList = [
     img: "./assets/img/Blest-Honey.png",
     name: "Blest",
     type: "Honey x473ml",
+    category: "Honey",
     ibu: 16,
     alcohol: "5,3%",
     price: 990,
@@ -64,6 +70,7 @@ const productsList = [
     img: "./assets/img/Kira-Takeshi.png",
     name: "Kira - Takeshi",
     type: "American IPA x473ml",
+    category: "IPA",
     ibu: 50,
     alcohol: "6,5%",
     price: 1600,
@@ -74,6 +81,7 @@ const productsList = [
     img: "./assets/img/Kira-Haruki.png",
     name: "Kira - Haruki",
     type: "Kolsch x473ml",
+    category: "Kolsch",
     ibu: 23,
     alcohol: "5,1%",
     price: 1290,
@@ -84,6 +92,7 @@ const productsList = [
     img: "./assets/img/BarbaRoja-DIpa.png",
     name: "Barba Roja",
     type: "Doble IPA x500ml",
+    category: "IPA",
     ibu: 68,
     alcohol: "8,7%",
     price: 1200,
@@ -94,6 +103,7 @@ const productsList = [
     img: "./assets/img/Baum-Ipa.png",
     name: "Baum",
     type: "IPA x473",
+    category: "IPA",
     ibu: 49,
     alcohol: "6,0%",
     price: 1650,
@@ -103,23 +113,14 @@ const productsList = [
 const cartMenu = document.querySelector('.cart');
 const cartIcon = document.querySelector('.cart-icon');
 const overlay = document.querySelector('.overlay');
-
 const menuIcon = document.querySelector('.menu-icon');
 const navMenu = document.querySelector('.nav-list');
-
-
-const cartContainer = document.querySelector('.cart-container');
-const cartTotal = document.querySelector('.cart-total')
-const cartBtn = document.querySelector('.cart-btn');
+const cartTotal = document.querySelector('.cart-total');
+const buyBtn = document.getElementById('buyBtn');
 const cartIconQty = document.querySelector('.cart-icon-qty');
-// const successProduct = document.querySelector('.success-product');
-
-
+const cartContainer = document.querySelector('.cart-container');
 
 const containerCardProducts = document.querySelector('.container-products');
-
-// const contpro = document.querySelector('.card-products')
-
 
 const contactForm = document.getElementById('form-contact');
 const inputName = document.getElementById('nombre');
@@ -127,49 +128,21 @@ const inputMail = document.getElementById('mail');
 const inputPhone = document.getElementById('tel');
 const inputMsg = document.getElementById('msg');
 
+const filterCategories = document.querySelector('.filter-products');
+const beerCategories = document.querySelectorAll('.category');
+
+
+
+
+
+
+
 
 // LOCALSTORAGE//
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const saveCart = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
 };
-
-
-
-
-//MENU
-const toggleMenu = () => {
-  navMenu.classList.toggle('open-menu');
-  if(cartMenu.classList.contains('show-cart')){
-    cartMenu.classList.remove('show-cart');
-    return;
-  }
-  overlay.classList.toggle('show-overlay');
-}
-
-//CARRITO
-
-const toggleCart = () => {
-  cartMenu.classList.toggle('show-cart');
-  if(navMenu.classList.contains('open-menu')){
-    navMenu.classList.remove('open-menu');
-    return;
-  }
-  overlay.classList.toggle('show-overlay');
-}
-
-const closeOnOverlayClick = () => {
-  navMenu.classList.remove('open-menu');
-  cartMenu.classList.remove('show-cart');
-  overlay.classList.remove('show-overlay');
-}
-
-// ----------------VER---------------
-const closeOnClick = (e) => {
-  if(!e.target.classList.contains('nav-link')) return;
-  barsMenu.classList.remove('show-menu');
-  overlay.classList.remove('show-overlay');
-}
 
 
 //CARD PRODUCTOS
@@ -208,21 +181,45 @@ const cardProductTemplate = (product) => {
   `;
 };
 
-const renderProducts = () => {
-  containerCardProducts.innerHTML = productsList.map((product) => cardProductTemplate(product)).join('');
+const renderProducts = (array) => {
+  containerCardProducts.innerHTML = array.map((product) => cardProductTemplate(product)).join('');
 }
 
 
 
+//ABRIR MENU Y CARRITO
+const toggleMenu = () => {
+  navMenu.classList.toggle('show-menu');
+  if(cartMenu.classList.contains('show-cart')){
+    cartMenu.classList.remove('show-cart');
+    return;
+  }
+  overlay.classList.toggle('show-overlay');
+}
+
+const toggleCart = () => {
+  cartMenu.classList.toggle('show-cart');
+  if(navMenu.classList.contains('show-menu')){
+    navMenu.classList.remove('show-menu');
+    return;
+  }
+  overlay.classList.toggle('show-overlay');
+}
+
+const closeOverlay = () => {
+  cartMenu.classList.remove('show-cart');
+  overlay.classList.remove('show-overlay');
+  navMenu.classList.remove('show-menu');
+}
+
+const closeClick = (e) => {
+  if(!e.target.classList.contains('nav-link')) return;
+  navMenu.classList.remove('show-menu');
+  overlay.classList.remove('show-overlay');
+}
 
 
-
-
-
-
-
-
-//--------------CARRITO------------------
+//CARRITO
 
 const renderCartProducts = () => {
   if(!cart.length){
@@ -247,7 +244,7 @@ const cartProductTemplate = (e) => {
 
     <div class="item-handler">
       <div class="item-qty">
-          <span class="quantity-handler down" data-id=${id}>-</span>
+          <span class="quantity-handler down" id="down" data-id=${id}>-</span>
           <span class="item-quantity">${quantity}</span>
           <span class="quantity-handler up" data-id=${id}>+</span>
       </div>
@@ -265,9 +262,18 @@ const productData = (product) => {
   return { id, img, name, type, price }
 }
 
+const addProductToCart = (e) => {
+  if(!e.target.classList.contains('product-btn-span') && !e.target.classList.contains('product-btn')) return; 
 
+  const product = productData(e.target.dataset);
 
-
+  if(isProductInCart(product)){
+    addUnit(product);
+  } else {
+    addProduct(product);
+  }
+  updateCart();
+}
 
 const addUnit = (product) => {
   cart = cart.map((cartProduct) => {
@@ -277,55 +283,13 @@ const addUnit = (product) => {
   })
 }
 
-
-const isExistingCartProduct = (product) => {
+const isProductInCart = (product) => {
   return cart.some((item) => item.id === product.id);
 }
 
-
-const createCartProduct = (product) => {
+const addProduct = (product) => {
   cart = [...cart, { ...product, quantity: 1 }]
 }
-
-
-
-const addProduct = (e) => {
-  if(!e.target.classList.contains('product-btn-span') && !e.target.classList.contains('product-btn')) return; 
-
-  const product = productData(e.target.dataset);
-
-  if(isExistingCartProduct(product)){
-    addUnit(product);
-    // showSuccessProduct('Agregaste otra unidad al carrito');
-  } else {
-    createCartProduct(product);
-    // showSuccessProduct('Agregaste el producto al carrito');
-
-  }
-  updateCart();
-}
-
-
-// const showSuccessProduct = (msg) => {
-//   successProduct.classList.add('show-success-product');
-//   successProduct.textContent = msg;
-//   setTimeout(() => {
-//     succesProd.classList.remove('show-success-product');
-//   }, 3000);
-// }
-
-
-
-/// ---------------FALTA VER----------- ///
-const renderCartQty = () => {
-  cartIconQty.textContent = cart.reduce((acc, cur) => acc + cur.quantity, 0);
-}
-
-const showCartQty = () => {
-  cartIconQty.textContent = cart.reduce((acc, cur) => acc + cur.quantity, 0);
-}
-/// ---------------FALTA VER----------- ///
-
 
 const showCartTotal = () => {
   const total = cart.reduce((acc, cur) => 
@@ -334,46 +298,60 @@ const showCartTotal = () => {
   cartTotal.textContent = `$${total}`;
 }
 
+const renderCartQty = () => {
+  cartIconQty.textContent = cart.reduce((acc, cur) => acc + cur.quantity, 0);
+}
 
+const showCartQty = () => {
+  cartIconQty.textContent = cart.reduce((acc, cur) => acc + cur.quantity, 0);
+}
+
+const disableBuyBtn = (btn) => {
+  if(cart.length) {
+    btn.classList.remove('disabled');
+    btn.removeAttribute('disabled');
+
+  } else {
+    btn.classList.add('disabled');
+    btn.setAttribute('disabled', "true");
+  }
+}
 
 const updateCart = () => {
   saveCart();
   renderCartProducts();
   showCartTotal();
   renderCartQty();
-  hideBtn();
+  disableBuyBtn(buyBtn);
   // disableBtn(deleteBtn);
 }
 
 const handleQuantity = (e) => {
   if(e.target.classList.contains('down')) {
-    handleMinusBtnEvent(e.target.dataset.id)
+    handleMinusBtn(e.target.dataset.id)
   } else if (e.target.classList.contains('up')) {
-    handlePlusBtnEvent(e.target.dataset.id)
+    handlePlusBtn(e.target.dataset.id)
   }
   updateCart();
 }
 
-
-const handlePlusBtnEvent = (id) => {
+const handlePlusBtn = (id) => {
   const existingCartProduct = cart.find((item) => item.id === id);
   addUnit(existingCartProduct);
 }
 
 
-const handleMinusBtnEvent = (id) => {
+const handleMinusBtn = (id) => {
   const existingCartProduct = cart.find((item) => item.id === id);
   console.log(existingCartProduct)
   if(existingCartProduct.quantity === 1){
-    removeProductFromCart(existingCartProduct);
+    removeProduct(existingCartProduct);
     return;
   }
   substractProductUnit(existingCartProduct);
 }
 
-
-
-const removeProductFromCart = (product) => {
+const removeProduct = (product) => {
   cart = cart.filter((prod) => prod.id !== product.id);
 }
 
@@ -385,10 +363,6 @@ const substractProductUnit = (product) => {
   })
 }
 
-
-
-
-
 const deleteProduct = (e) => {
   if(e.target.classList.contains('delete')) {
     console.log('delete')
@@ -398,62 +372,8 @@ const deleteProduct = (e) => {
 
 const handleDeleteBtnEvent = (id) => {
   const existingCartProduct = cart.find((item) => item.id === id);
-  removeProductFromCart(existingCartProduct);
+  removeProduct(existingCartProduct);
   console.log("handleDeleteBtnEvent");
-  updateCart();
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/// ---------------FALTA VER----------- ///
-
-
-
-
-
-
-  // const handleMinusBtnEvent = (id) => {
-  //   const existingCartProduct = cart.find((item) => item.id === id);
-  //   console.log(existingCartProduct)
-  //   if(existingCartProduct.quantity === 1){
-  //     removeProductFromCart(existingCartProduct);
-  //     return;
-  //   }
-  //   substractProductUnit(existingCartProduct);
-  // }
-  
-  // const removeProductFromCart = (product) => {
-  //   cart = cart.filter((prod) => prod.id !== product.id);
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-const deleteAllCart = () => {
-  if(window.confirm('¿Querés eliminar todos los productos seleccionados del carrito?')) {
-    clearCart();
-  }
-}
-
-const clearCart = () => {
-  cart = [];
   updateCart();
 }
 
@@ -464,20 +384,92 @@ const cartBuy = () => {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+/// ---------------FALTA VER----------- ///
+
+
+// const deleteAllCart = () => {
+//   if(window.confirm('¿Querés eliminar todos los productos seleccionados del carrito?')) {
+//     clearCart();
+//   }
+// }
+
+// const clearCart = () => {
+//   cart = [];
+//   updateCart();
+// }
+
+
 /// ---------------FALTA VER----------- ///
 
 
 
-const hideBtn = (btn) => {
-  if(cart.length) {
-    cartBtn.classList.remove('hide-cart-btn');
-  } else {
-    cartBtn.classList.add('hide-cart-btn');
+
+
+
+
+
+//--------------------------------------------------------------------------
+// LOGICA DE FILTROS
+
+let activeFilter = null;
+
+const isIniactiveFilterBtn = (element) => {
+  return (
+    element.classList.contains("category") && !element.classList.contains('active')
+  );
+};
+
+const changeBtnActiveState = (filter) => {
+  const categories = [...beerCategories];
+  categories.forEach((li) => {
+    if(li.dataset.category !== filter) {
+      li.classList.remove('active');
+      return;
+    }
+    li.classList.add('active');
+  })
+}
+
+const changeFilterState = (element) => {
+  activeFilter = element.dataset.category;
+  changeBtnActiveState(activeFilter);
+}
+
+const renderFilteredProducts = () => {
+  containerCardProducts.innerHTML = '';
+  if(!activeFilter) {
+    renderProducts(productsList);
+    return;
   }
+
+  
+  const filteredProducts = productsList.filter(
+    (product) => product.category === activeFilter
+  );
+  console.log(filteredProducts);
+  containerCardProducts.innerHTML = '';
+
+  renderProducts(filteredProducts);
+}
+
+const apllyFilter = ({ target }) => {
+  if(!isIniactiveFilterBtn(target)) return;
+  changeFilterState(target);
+  renderFilteredProducts();
 }
 
 
-
+///-------------------------------------------------------------------
 
 
 
@@ -617,21 +609,19 @@ const validateForm = (e) => {
 const init = () => {
   cartIcon.addEventListener('click', toggleCart);
   menuIcon.addEventListener('click', toggleMenu);
-  overlay.addEventListener('click', closeOnOverlayClick);
-  navMenu.addEventListener('click', closeOnClick);
-  document.addEventListener('DOMContentLoaded', renderProducts);
+  overlay.addEventListener('click', closeOverlay);
+  navMenu.addEventListener('click', closeClick);
+  document.addEventListener('DOMContentLoaded', renderProducts(productsList));
 
 
 
   window.addEventListener('DOMContentLoaded', renderCartProducts);
   window.addEventListener('DOMContentLoaded', showCartQty);
   window.addEventListener('DOMContentLoaded', showCartTotal);
-  containerCardProducts.addEventListener('click', addProduct);
+  containerCardProducts.addEventListener('click', addProductToCart);
   cartContainer.addEventListener('click', handleQuantity);
-  // buyBtn.addEventListener('click', completeBuy);
-  // deleteBtn.addEventListener('click', deleteCart);
-  hideBtn(cartBtn);
-  // disableBtn(deleteBtn);
+  buyBtn.addEventListener('click', cartBuy);
+  disableBuyBtn(buyBtn);
   cartContainer.addEventListener('click', deleteProduct);
 
 
@@ -644,6 +634,10 @@ const init = () => {
   inputPhone.addEventListener('input', () => checkPhone(inputPhone));
   inputMsg.addEventListener('input', () => checkMsg(inputMsg));
 
+
+
+  filterCategories.addEventListener('click', apllyFilter);
+  
 };
 
 init();
