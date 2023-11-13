@@ -109,32 +109,24 @@ const productsList = [
     price: 1650,
   },
 ];
-
-const cartMenu = document.querySelector('.cart');
-const cartIcon = document.querySelector('.cart-icon');
-const overlay = document.querySelector('.overlay');
-const menuIcon = document.querySelector('.menu-icon');
-const navMenu = document.querySelector('.nav-list');
-const cartTotal = document.querySelector('.cart-total');
-const buyBtn = document.getElementById('buyBtn');
-const cartIconQty = document.querySelector('.cart-icon-qty');
-const cartContainer = document.querySelector('.cart-container');
-
 const containerCardProducts = document.querySelector('.container-products');
-
+const cartIcon = document.querySelector('.cart-icon');
+const menuIcon = document.querySelector('.menu-icon');
+const cartMenu = document.querySelector('.cart');
+const cartContainer = document.querySelector('.cart-container');
+const cartTotal = document.querySelector('.cart-total');
+const cartIconQty = document.querySelector('.cart-icon-qty');
+const buyBtn = document.getElementById('buy-btn');
+const deleteCartBtn = document.getElementById('delete-cart');
+const overlay = document.querySelector('.overlay');
+const navMenu = document.querySelector('.nav-list');
+const filterCategories = document.querySelector('.filter-products');
+const beerCategories = document.querySelectorAll('.category');
 const contactForm = document.getElementById('form-contact');
 const inputName = document.getElementById('nombre');
 const inputMail = document.getElementById('mail');
 const inputPhone = document.getElementById('tel');
 const inputMsg = document.getElementById('msg');
-
-const filterCategories = document.querySelector('.filter-products');
-const beerCategories = document.querySelectorAll('.category');
-
-
-
-
-
 
 
 
@@ -306,7 +298,7 @@ const showCartQty = () => {
   cartIconQty.textContent = cart.reduce((acc, cur) => acc + cur.quantity, 0);
 }
 
-const disableBuyBtn = (btn) => {
+const disableCartBtn = (btn) => {
   if(cart.length) {
     btn.classList.remove('disabled');
     btn.removeAttribute('disabled');
@@ -322,8 +314,8 @@ const updateCart = () => {
   renderCartProducts();
   showCartTotal();
   renderCartQty();
-  disableBuyBtn(buyBtn);
-  // disableBtn(deleteBtn);
+  disableCartBtn(buyBtn);
+  disableCartBtn(deleteCartBtn);
 }
 
 const handleQuantity = (e) => {
@@ -384,42 +376,22 @@ const cartBuy = () => {
   }
 }
 
+const deleteCart = () => {
+  if(window.confirm('¿Seguro querés vaciar el carrito?')) {
+    clearCart();
+  }
+}
 
-
-
-
-
-
-
-
-
-
-/// ---------------FALTA VER----------- ///
-
-
-// const deleteAllCart = () => {
-//   if(window.confirm('¿Querés eliminar todos los productos seleccionados del carrito?')) {
-//     clearCart();
-//   }
-// }
-
-// const clearCart = () => {
-//   cart = [];
-//   updateCart();
-// }
-
-
-/// ---------------FALTA VER----------- ///
-
-
-
-
+const clearCart = () => {
+  cart = [];
+  updateCart();
+}
 
 
 
 
 //--------------------------------------------------------------------------
-// LOGICA DE FILTROS
+// FILTROS
 
 let activeFilter = null;
 
@@ -621,8 +593,11 @@ const init = () => {
   containerCardProducts.addEventListener('click', addProductToCart);
   cartContainer.addEventListener('click', handleQuantity);
   buyBtn.addEventListener('click', cartBuy);
-  disableBuyBtn(buyBtn);
+  disableCartBtn(buyBtn);
+  disableCartBtn(deleteCartBtn);
+  deleteCartBtn.addEventListener('click', deleteCart);
   cartContainer.addEventListener('click', deleteProduct);
+  
 
 
 
