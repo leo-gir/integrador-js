@@ -116,6 +116,7 @@ const cartMenu = document.querySelector('.cart');
 const cartContainer = document.querySelector('.cart-container');
 const cartTotal = document.querySelector('.cart-total');
 const cartIconQty = document.querySelector('.cart-icon-qty');
+const cartMinus = document.querySelector('.down')
 const buyBtn = document.getElementById('buy-btn');
 const deleteCartBtn = document.getElementById('delete-cart');
 const overlay = document.querySelector('.overlay');
@@ -337,7 +338,6 @@ const handleMinusBtn = (id) => {
   const existingCartProduct = cart.find((item) => item.id === id);
   console.log(existingCartProduct)
   if(existingCartProduct.quantity === 1){
-    removeProduct(existingCartProduct);
     return;
   }
   substractProductUnit(existingCartProduct);
