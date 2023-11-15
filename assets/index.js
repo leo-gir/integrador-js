@@ -116,7 +116,6 @@ const cartMenu = document.querySelector('.cart');
 const cartContainer = document.querySelector('.cart-container');
 const cartTotal = document.querySelector('.cart-total');
 const cartIconQty = document.querySelector('.cart-icon-qty');
-const cartMinus = document.querySelector('.down')
 const buyBtn = document.getElementById('buy-btn');
 const deleteCartBtn = document.getElementById('delete-cart');
 const overlay = document.querySelector('.overlay');
@@ -336,7 +335,6 @@ const handlePlusBtn = (id) => {
 
 const handleMinusBtn = (id) => {
   const existingCartProduct = cart.find((item) => item.id === id);
-  console.log(existingCartProduct)
   if(existingCartProduct.quantity === 1){
     return;
   }
@@ -357,7 +355,6 @@ const substractProductUnit = (product) => {
 
 const deleteProduct = (e) => {
   if(e.target.classList.contains('delete')) {
-    console.log('delete')
     handleDeleteBtnEvent(e.target.dataset.id)
   } 
 }
@@ -365,7 +362,6 @@ const deleteProduct = (e) => {
 const handleDeleteBtnEvent = (id) => {
   const existingCartProduct = cart.find((item) => item.id === id);
   removeProduct(existingCartProduct);
-  console.log("handleDeleteBtnEvent");
   updateCart();
 }
 
@@ -428,7 +424,6 @@ const renderFilteredProducts = () => {
   const filteredProducts = productsList.filter(
     (product) => product.category === activeFilter
   );
-  console.log(filteredProducts);
   containerCardProducts.innerHTML = '';
 
   renderProducts(filteredProducts);
