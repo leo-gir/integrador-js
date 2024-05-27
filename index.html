@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bodega de la Birra</title>
+    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./assets/mediaqueries.css">
+
+
+</head>
+
+<body>
+    <header id="header">
+        <nav class="navbar">
+                
+            <div>
+                <img src="./assets/img/logo2.png" alt="logo" class="nav-logo">
+            </div>
+            
+            <ul class="nav-list">
+                <li><a class="nav-link" href="#hero">Inicio</a></li>
+                <li><a class="nav-link" href="#about">Nosotros</a></li>
+                <li><a class="nav-link" href="#products">Productos</a></li>
+                <li><a class="nav-link" href="#contact">Contacto</a></li>
+            </ul>
+            
+            <div class="icons-menu">
+                <div class="cart-icon">
+                    <img src="./assets/img/cart.png" alt="cart" class="cart-icon">
+                    <div class="cart-icon-qty">0</div>
+                </div>
+                <div class="menu-icon show-menu-icon">
+                    <img src="./assets/img/bars.png" alt="menu">
+                </div>
+            </div>
+
+            <div class="cart">
+                <h2>TUS COMPRAS</h2>
+
+                <div class="cart-container"></div>
+
+                <div class="total">
+                    <h3>Total</h3>
+                    <span class="cart-total"></span>
+                </div>
+                <div class="cart-btn" id="cart-btn">
+                    <button class="delete-cart" id="delete-cart">Vaciar carrito</button>
+                    <button class="buy-btn" id="buy-btn">Comprar</button>
+                </div>
+            </div>
+            <div class="overlay "></div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section id="hero">
+            
+            <img src="./assets/img/hero.png" alt="hero" class="hero-img">
+        </section>
+
+        <section id="about">
+            <h1>Nuestros servicios</h1>
+            <div class="container-about">
+                <div class="card-about">
+                    <img src="./assets/img/repartidor-moto.png" alt="repartidor">
+                    <div class="card-info">
+                        <h2>Envío rápido</h2>
+                        <p> ¡Disfrutá de tus cervezas artesanales favoritas en casa en tiempo récord! Nuestro servicio
+                            de envío rápido garantiza que tus cervezas lleguen frescas a tu puerta en tan solo unas
+                            horas. No esperes, ordénalas y disfruta de la comodidad de nuestro envío rápido.</p>
+                    </div>
+                </div>
+
+                <div class="card-about">
+                    <img src="./assets/img/botellas-cervezas.png" alt="botellas-cerveza">
+                    <div class="card-info">
+                        <h2>Gran variedad</h2>
+                            <p> Sumergite en el mundo de las cervezas artesanales con nuestra exclusiva selección.
+                                Reunimos
+                                las mejores cervezas de los mejores cerveceros. Desde sabores
+                                frutales hasta notas ahumadas, nuestra selección te llevará a un viaje de sabor que no
+                                te
+                                podés perder.</p>
+                    </div>
+                </div>
+
+                <div class="card-about">
+                    <img src="./assets/img/cervezas-cata.png" alt="cata-cerveza">
+                    <div class="card-info">
+                        <h2>Catas en local</h2>
+                        <p>Experimentá la esencia de la cerveza artesanal con Catas en nuestro local. Nuestros
+                            expertos cerveceros te guiarán a través de una selección de nuestras mejore cervezas
+                            explorando sabores y aromas únicos. ¡Vení y disfrutá de una experiencia única!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products">
+            <h1>Productos</h1>
+            <div class="filter-products">
+                <h3>Elegí el tipo de cerveza que buscás: </h3>
+                <ul class="filter">
+                    <li class="category active">Todas</li>
+                    <li class="category" data-category="APA">APA</li>
+                    <li class="category" data-category="Belguian">Belguian</li>
+                    <li class="category" data-category="Honey">Honey</li>
+                    <li class="category" data-category="IPA">IPA</li>
+                    <li class="category" data-category="Kolsch">Kolsch</li>
+                    <li class="category" data-category="Negra">Negra</li>
+                </ul>
+            </div>
+
+            <div class="container-products"></div>
+            <button class="see-more-btn">Ver más</button>
+        </section>
+
+        <section id="contact">
+            <h1>Contacto</h1>
+            <div class="contacto">
+                <form class="form-container" id="form-contact">
+                    <h2>Dejanos tu consulta</h2>
+                    <div>
+                        <label for="name">Nombre:</label>
+                        <input type="text" name="nombre" id="name" placeholder="Ingresá tu nombre" class="form_field" required>
+                        <small></small>
+                    </div>
+                    <div>
+                        <label for="mail">Correo electrónico:</label>
+                        <input type="email" name="mail" id="mail" placeholder="Ingresá tu correo" class="form_field" required>
+                        <small></small>
+                    </div>
+                    <div>
+                        <label for="tel">Teléfono:</label>
+                        <input type="number" name="tel" id="tel" placeholder="Ingresá tu teléfono" class="form_field" required>
+                        <small></small>
+                    </div>
+                    <div>
+                        <label for="msg">Ingresá tu consulta</label>
+                        <textarea name="consulta"  id="msg" cols="30" rows="10" placeholder="Igresá tu consulta"
+                            required></textarea>
+                        <small></small>
+                    </div>
+                    <input type="submit" value="Enviar" id="submit" class="form-submit">
+                </form>
+                <div class="contact">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.9844293437545!2d-58.52439412342854!3d-34.65509616021486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc859b4be3813%3A0x6a37114c1393115e!2sAv.%20Emilio%20Castro%207436%2C%20C1408IGY%20CABA!5e0!3m2!1ses-419!2sar!4v1698624611705!5m2!1ses-419!2sar"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="tel">
+                            <div>
+                                <img src="./assets/img/tel.png" alt="Teléfono">
+                                <span>4444-4444</span>
+                            </div>
+                            <div>
+                                <img src="./assets/img/wa.png" alt="WhatsApp">
+                                <span>15-5555-5555</span>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </section>
+        <div class="modal-container">
+            <div class="modal"></div>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="social">
+            <a href="http://www.facebook.com" target="_blank"><img src="./assets/img/fb-footer.png" alt="facebook"></a>
+            <a href="http://www.instagram.com" target="_blank"><img src="./assets/img/ig-footer.png" alt="instagram"></a>
+            <a href="tel:4444-4444" target="_blank"><img src="./assets/img/tel-footer.png" alt="teléfono"></a>
+            <a href="https://web.whatsapp.com/" target="_blank"><img src="./assets/img/wa-footer.png" alt="whatsapp"></a>
+        </div>
+
+        <div class="footer-logo">
+            <img src="./assets/img/logo.png" alt="">
+        </div>
+
+        <div class="design">
+            <p>Integrador JavaScript - NUCBA</p>
+            <p>Diseño de Leonel Gironella</p>
+            <p>Año 2024</p>
+        </div>
+
+    </footer>
+
+    <script src="./assets/data.js"></script>
+    <script src="./assets/index.js"></script>
+
+</body>
+</html>
