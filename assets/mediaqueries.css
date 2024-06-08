@@ -207,14 +207,34 @@
     }
     
     #footer{
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .social,
-    .footer-logo,
     .design{
-        width: 80%;
-        margin-bottom: 30px;
+        width: 100%;
+        margin: 15px;
+        justify-content: space-around;
+        
+    }
+    
+    .footer-logo{
+        display: none;
+    }
+
+
+    .social a{
+        justify-content: space-around;
+        align-items: center;
+        width: 40px;
+    }
+
+    .social img {
+        width: 40px;
+    }
+
+    .design p{
+        font-size: 13px;
     }
 
     .tel{
